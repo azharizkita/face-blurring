@@ -3,10 +3,10 @@ import os
 import numpy as np
 
 class prop(object):
-    def __init__(self, convolutionKernelDimension = 3, faceCascade = "haarcascade_frontalface_default.xml"):
-        self.faceCascade = cv2.CascadeClassifier(cv2.data.haarcascades + faceCascade)
-        self.convolutionKernel = np.ones((convolutionKernelDimension, convolutionKernelDimension)) * (1 / (convolutionKernelDimension**2)) 
+    def __init__(self, convolutionKernelDimension = 3, faceCascade = "haarcascade_frontalface_default.xml", eyeCascade = ""):
         self.mainFilePath = os.path.dirname(__file__)
+        self.faceCascade = cv2.CascadeClassifier(self.mainFilePath +'/cascades/'+ faceCascade)
+        self.convolutionKernel = np.ones((convolutionKernelDimension, convolutionKernelDimension)) * (1 / (convolutionKernelDimension**2)) 
 
 class displayWindow(object):
     def __init__(self, displayName = 'img', resolution = (600, 600)):
